@@ -1,27 +1,17 @@
 from app import gemini, genai
 import os
 import csv
-import anthropic
+
 from prompts import *
 from dotenv import load_dotenv
 import google.generativeai as genai
 import textwrap
-from IPython.display import Markdown
 
-
-# athropic_api = load_dotenv
-# client = anthropic.Anthropic()
-# sonnet = "claude-3-5-sonnet-20240620"
 
 gemini = 'AIzaSyCnhGHna9kU6-fmolRVc7WdEgehyCOYTSU'
 os.environ['GOOGLE_API_KEY'] = gemini
 genai.configure(api_key=gemini)
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
-
-
-def to_markdown(text):
-    text = text.replace('•', '  *')
-    return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
 
 def gemini_model(query):
